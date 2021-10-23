@@ -10,7 +10,7 @@ export default function Home({ data }) {
 
       <main>
         <h1 className="title">
-          Welcome to <a href="https://nextjs.org">BLOG.js!</a>
+          Welcome to <a href="https://nextjs.org">BLOG.js! {data.id}</a>
         </h1>
 
         <p className="description">
