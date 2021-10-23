@@ -1,7 +1,6 @@
 import Head from "next/head";
-import Link from "next/link";
 
-export default function Home() {
+export default function Home({ data }) {
   return (
     <div className="container">
       <Head>
@@ -11,10 +10,7 @@ export default function Home() {
 
       <main>
         <h1 className="title">
-          Welcome to{" "}
-          <Link href="/blog">
-            <a>Blog</a>
-          </Link>
+          Welcome to <a href="https://nextjs.org">BLOG.js!</a>
         </h1>
 
         <p className="description">
@@ -209,4 +205,20 @@ export default function Home() {
       `}</style>
     </div>
   );
+}
+
+const delay = async (delay = 1000, callback = () => {}) => {
+  const delayPromise = (ms) => new Promise((res) => setTimeout(res, ms));
+  await delayPromise(delay);
+
+  callback();
+};
+
+export async function getServerSideProps() {
+  // Fetch data from external API
+  await delay(500);
+  let data = { id: 1 };
+
+  // Pass data to the page via props
+  return { props: { data } };
 }
